@@ -137,19 +137,14 @@ select:focus,input:focus{outline:none;border-bottom-color:var(--red);box-shadow:
 .disc{margin-top:20px;font-style:italic;font-size:14px;color:var(--ink-2)}
 .empty{min-height:340px;display:grid;place-items:center;text-align:center;font-style:italic;font-size:20px;color:var(--ink-2)}
 
-.colophon{--stamp:#8A2A57;margin:44px auto 0;width:fit-content;max-width:100%;display:flex;align-items:center;gap:6px;padding:18px 26px 18px 30px;background:var(--paper);border:1px solid var(--rule);border-radius:4px;box-shadow:0 14px 30px -18px rgba(40,30,10,.35);position:relative;background-image:repeating-linear-gradient(to bottom,transparent 0 27px,var(--line) 27px 28px)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .colophon{--stamp:#E58AB5}}
-:root[data-theme="dark"] .colophon{--stamp:#E58AB5}
-.colophon .sig{display:flex;flex-direction:column;min-width:200px;position:relative;z-index:1}
-.colophon .sig .k{font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
-.colophon .sig .hand{font:700 46px/1 "Caveat",cursive;color:var(--blue);margin:10px 0 2px;transform:rotate(-3deg);transform-origin:left center;white-space:nowrap}
-.colophon .sig .line{border-top:1.5px solid var(--ink);margin-right:-30px}
-.colophon .sig .role{font:italic 400 15px/1.3 "Newsreader",Georgia,serif;color:var(--ink-2);margin-top:5px}
-.colophon .kase{flex:none;width:118px;height:118px;margin-left:-12px;color:var(--stamp);transform:rotate(-14deg);opacity:.88;mix-blend-mode:multiply;filter:url(#kaseDoku)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .colophon .kase{mix-blend-mode:screen}}
-:root[data-theme="dark"] .colophon .kase{mix-blend-mode:screen}
-.colophon .kase text{fill:currentColor;font-family:"IBM Plex Mono",monospace;font-weight:600}
-@media (max-width:480px){.colophon{padding:16px 16px 16px 20px}.colophon .sig{min-width:0}.colophon .sig .hand{font-size:38px}.colophon .kase{width:96px;height:96px}}
+.colophon{margin:52px auto 0;width:min(720px,100%);display:flex;flex-direction:column;align-items:center;text-align:center}
+.colophon .dbl{width:100%;border-top:4px double var(--ink)}
+.colophon .name{margin:16px 0 0;font:900 clamp(30px,7vw,46px)/.95 "Fraunces",Georgia,serif;font-variation-settings:"opsz" 144;letter-spacing:-.035em;color:var(--ink)}
+.colophon .name em{font-style:italic;font-weight:700;color:var(--red)}
+.colophon .orn{display:flex;align-items:center;gap:12px;width:100%;margin-top:14px}
+.colophon .orn span{flex:1;border-top:1px solid var(--ink)}
+.colophon .orn b{font:400 18px/1 "Fraunces",Georgia,serif;color:var(--red)}
+.colophon .role{margin:10px 0 0;font:500 11.5px/1.3 "IBM Plex Mono",monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
 
 .ymd{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:12px}
 .ymd label{position:relative;display:block}
@@ -781,25 +776,12 @@ ul.files li,.results li{display:flex;align-items:center;gap:10px;padding:8px 10p
     </div>
   </section>
   <div class="toast" id="ev_toast" role="status" aria-live="polite"></div>
-  <div class="colophon" role="contentinfo" aria-label="Uygulama yapımcısı: Av. Melisa Çördük">
-    <div class="sig" aria-hidden="true">
-      <span class="k">Uygulama yapımcısı</span>
-      <span class="hand">Melisa Çördük</span>
-      <span class="line"></span>
-      <span class="role">Avukat</span>
-    </div>
-    <svg class="kase" viewBox="0 0 140 140" aria-hidden="true">
-      <defs>
-        <path id="kaseYay" d="M70,70 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
-        <filter id="kaseDoku"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 1.25" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter>
-      </defs>
-      <circle cx="70" cy="70" r="66" fill="none" stroke="currentColor" stroke-width="3.2"/>
-      <circle cx="70" cy="70" r="38" fill="none" stroke="currentColor" stroke-width="1.4"/>
-      <text font-size="11.2" letter-spacing="1.6"><textPath href="#kaseYay" startOffset="0">AV. MELİSA ÇÖRDÜK ✦ HUKUK BÜROSU ✦</textPath></text>
-      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(58 47) scale(1)"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0L5 7zM19 7l-3 6a3 3 0 0 0 6 0l-3-6z"/></g>
-      <text x="70" y="89" text-anchor="middle" font-size="10" letter-spacing="2.2">AVUKAT</text>
-    </svg>
-  </div>
+  <footer class="colophon" aria-label="Uygulama yapımcısı">
+    <div class="dbl"></div>
+    <p class="name">Av. Melisa <em>Çördük</em></p>
+    <div class="orn" aria-hidden="true"><span></span><b>✦</b><span></span></div>
+    <p class="role">Büro Asistanı yapımcısı</p>
+  </footer>
 </div>
 <script>
 (() => {
